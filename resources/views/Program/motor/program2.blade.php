@@ -68,8 +68,9 @@
                     <td>{{ $program->admin->name }}</td>
                     <td>{{ $program->status }}</td>
                     <td>{{ $program->transaction_date }}</td>
-                    <td>{{ $program->cicilan }}</td>
-                    <td>{{ $program->total_installment }}</td>
+                    <td>Rp.{{number_format($program->cicilan,2,',','.') }}</td>
+                    <td>Rp.{{ number_format($program->total_installment,2,',','.') }}</td>
+                    <td>Rp.{{ number_format($program->sisa_bayar,2,',','.') }}</td>
                     <td>{{ $program->paid_off ? 'Lunas' : 'Belum Lunas' }}</td>
                     <td>
                         <a href=""></a>
@@ -103,8 +104,11 @@
                     <td colspan="5">
                         <h5>Setoran untuk Program Motor: {{ $program->nomor_polisi }}</h5>
                         {{-- Tombol Tambah Setoran --}}
+                        @if ($program->status == "acc")
                         <button data-toggle="modal" data-target="#AddSetorModal-{{ $program->id }}"
                             class="btn btn-primary my-3 ">Add Setoran</button>
+                        @endif
+
                         <table class="table table-sm">
                             <thead>
                                 <tr>

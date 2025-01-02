@@ -13,7 +13,7 @@
 
         <!-- Bagian Konten Program Motor -->
         @yield('program_motor_content')
-        <x-button route="{{ route('member.show',$member->id) }}" color="primary mt-4" buttonText="Back" />
+        <x-button route="{{ route('member.program_motor',$member->id) }}" color="primary mt-4" buttonText="Back" />
     </div>
     
    

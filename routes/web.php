@@ -22,14 +22,13 @@ Route::get('/', function () {
 });
 
 Route::middleware(['guest'])->group(function () {
-
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/login', [AuthController::class, 'authenticating'])->name('auth.authenticating');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-    Route::resource('admin', AdminController::class);
+    Route::resource('admin', AdminController::class)->middleware('superadmin');
     Route::resource('member', MemberController::class);
     Route::get('transaction/setor', [TransactionDataController::class, 'setor'])->name('transaction.setor');
     // program bos pake resource
